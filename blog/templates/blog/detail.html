@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 {% load static %}
@@ -8,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
-    <title>Raymond Woo</title>
+    <title>Blog: {{ blog.title }}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/album/">
 
@@ -82,9 +81,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" aria-current="page" href="#">Home</a>
           <a class="nav-link" href="{% static 'CV for Hon-Fai-Raymond-Woo.pdf' %}">Resume</a>
-          <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
+          <a class="nav-link active" href="{% url 'allblogs' %}">Blog</a>
           <a class="nav-link" href="http://linkedin.com/in/raymond-woo-45319110">LinkedIn</a>
         </div>
       </div>
@@ -93,41 +92,16 @@
 </header>
 
 <main>
+  <div class="container">
 
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Hi, I'm Raymond</h1>
-        <p class="lead text-muted">This is a sample website that I created to present my profile using Python and Django framework.</p>
-        <p>
-          <a href="mailto:raymondhfwoo@gmail.com" class="btn btn-primary my-2">Email Me</a>
-        </p>
-        <img src="{% static 'Woo_Color_Center.jpg' %}" height=300 />
-      </div>
-    </div>
-  </section>
+    <h1 class="text-center pt-3">{{ blog.title }}</h1>
+    <p class="text-center">{{ blog.pub_date }}</p>
+    <img src="{{ blog.image.url }}" class="img-fluid" />
+    <br />
+    <br />
+    <p>{{ blog.body }}</p>
 
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-        {% for job in jobs.all %}
-        <div class="col">
-          <div class="card shadow-sm">
-            <img class="card-img-top" src="{{ job.image.url }}"/>
-
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-              <div class="d-flex justify-content-between align-items-center">
-            </div>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
   </div>
-
 </main>
 
 <footer class="text-muted py-5">
